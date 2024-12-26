@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AnketPortali.Models.AppRole>
+
+@{
+    ViewData["Title"] = "Rol Yönetimi";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";  // Admin layout'u kullanıyoruz
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Rol Ekleme Butonu -->
+<a href="@Url.Action("Create", "Roles")" class="btn btn-success">Yeni Rol Ekle</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Rol Adı</th>
+            <th>Kullanıcı</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var Approle in Model)
+            {
+                <tr>
+                    <td>@Approle.Name</td>
+                    <td>
+                        <!-- Kullanıcıya özel işlemler için bir alan eklenebilir -->
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="2">Henüz bir rol eklemesi yapılmamıştır.</td></tr>
+        }
+    </tbody>
+</table>
